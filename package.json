@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/imsun/gitment",
   "scripts": {
-    "build": "babel src --out-dir dist --ignore test.js --source-maps & NODE_ENV=production webpack --config webpack.config.js --progress --profile --colors",
+    "babel": "babel src --out-dir dist --ignore test.js --source-maps",
+    "webpack": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --profile --colors",
+    "build": "npm run babel && npm run webpack",
     "dev": "webpack-dev-server --config webpack.dev.config.js --host 0.0.0.0 --progress --profile --colors"
   },
   "devDependencies": {
@@ -32,6 +34,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "mobx": "^3.1.7"
   },
   "license": "MIT"
